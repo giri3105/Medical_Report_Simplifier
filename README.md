@@ -55,8 +55,7 @@ Medical Report Simplifier , Put in your medical report and understand it like ne
 ### High Level Architecture
 
 Routes Available illustrated with the picture
-
-<img width="1920" height="1080" alt="HLD ARCHITECTURE" src="https://github.com/user-attachments/assets/15d6ccab-984d-48d0-9a9e-e4f9ae254932" />
+<img width="1920" height="1080" alt="HLD ARCHITECTURE" src="https://github.com/user-attachments/assets/3810db4c-011e-428a-bce9-8683bc420777" />
 
 
 **/summarize/**: Accepts an image of a medical report and returns a brief summary along with normalized data. The summary is generated using a meta LLaMA model via the Hugging Face API.
@@ -71,7 +70,7 @@ Routes Available illustrated with the picture
 
 The following image displays a low-level architecture diagram for a multi-stage data processing pipeline, detailing the flow from a raw image to a final, AI-generated summary.
 
-<img width="1920" height="1080" alt="lld architecture" src="https://github.com/user-attachments/assets/dba87d2d-9632-4b13-b630-6cccd2ba5947" />
+<img width="1920" height="1080" alt="lld architecture" src="https://github.com/user-attachments/assets/6d839b4b-c84e-4bb0-9764-9852519a74c5" />
 
 
 **Architecture Overview: A Multi-Stage Pipeline**
@@ -84,11 +83,101 @@ The following image displays a low-level architecture diagram for a multi-stage 
 
 ### Output Guardrail Architecture
 
-<img width="1920" height="1080" alt="GUARDRAIL_ARCHITECTURE" src="https://github.com/user-attachments/assets/814f39ad-d3c0-4144-a41d-6b4780e3edec" />
-
 This guardrail architecture uses two chained AI prompts: one generates a simple lab explanation, and the second validates its safety. If safe ("TRUE"), the explanation is returned; if not ("FALSE"), an error is given.
+<img width="1920" height="1080" alt="GUARDRAIL_ARCHITECTURE" src="https://github.com/user-attachments/assets/9089e3ef-8945-4dc2-a0d8-ac56044f5ee4" />
 
 
 
-##API Examples
+## API Examples
 
+### Summarize Report
+**cURL command**
+
+Replace the `http://127.0.0.1:8000` with the URL from ngrok and `path_of_sample_report` by the actual path of sample_report that is provided in GitHub
+```bash
+curl --location 'http://127.0.0.1:8000/summarize/' \
+--form 'file=@"path_of_sample_report"'
+```
+
+**Postman**
+
+Select `POST` request with URL `{https://url_from_ngrok or localhost}/summarize/` and choose `Body` -> `form-data` -> Type **file** in `Key` -> `File` in dropdown -> choose the file (sample_report) for `Value`
+
+Sample given : 
+<img width="756" height="249" alt="sample_post_man_request" src="https://github.com/user-attachments/assets/73843381-d3bd-4050-8916-10559dd61f61" />
+
+### Analyze Report
+**cURL command**
+
+Replace the `http://127.0.0.1:8000` with the URL from ngrok and `path_of_sample_report` by the actual path of sample_report that is provided in GitHub
+```bash
+curl --location 'http://127.0.0.1:8000/analyze-report/' \
+--form 'file=@"path_of_sample_report"'
+```
+
+**Postman**
+
+Same as before but change the route to `/analyze-report/`
+
+### Get Normalized Report
+**cURL command**
+
+Replace the `http://127.0.0.1:8000` with the URL from ngrok and `path_of_sample_report` by the actual path of sample_report that is provided in GitHub
+```bash
+curl --location 'http://127.0.0.1:8000/get-normalized-report/' \
+--form 'file=@"path_of_sample_report"'
+```
+
+**Postman**
+
+Same as before but change the route to `/get-normalized-report/`
+
+### Extract Table
+**cURL command**
+
+Replace the `http://127.0.0.1:8000` with the URL from ngrok and `path_of_sample_report` by the actual path of sample_report that is provided in GitHub
+```bash
+curl --location 'http://127.0.0.1:8000/extract-table/' \
+--form 'file=@"path_of_sample_report"'
+```
+
+**Postman**
+
+Same as before but change the route to `/extract-table/`
+
+### To use Text Input : 
+**cURL command:**
+
+Replace the `http://127.0.0.1:8000` with the URL from ngrok 
+
+``` bash 
+curl --location 'http://127.0.0.1:8000/summarize/' \
+--form 'text_input="Patient Report: Complete Blood Count (CBC)
+Haemoglobin Estimation: 15.3 g/dl (Reference: 11.1 - 14.1)
+Total Leukocyte Count (TLC): 9.9 K/uL (Reference: 6 - 18)
+Platelet Count: 107 K/uL (Reference: 200 - 550)
+RBC Count (Red Blood Cell): 5.33 10^6/µL (Reference: 4.1 - 5.3)
+PCV (Haematocrit): 44.5 % (Reference: 30 - 40)
+Mean Corpuscular Volume (MCV): 83.4 fl (Reference: 68 - 84)
+Neutrophils: 68 % (Reference: 20 - 65)"'
+```
+
+**Postman:**
+
+Sample Image :
+<img width="756" height="249" alt="sample_post_man_request_text" src="https://github.com/user-attachments/assets/cdb53389-37aa-479e-a189-27fc3163c017" />
+
+Paste the sample text in the Value column 
+
+Sample Text : 
+
+```txt
+Patient Report: Complete Blood Count (CBC)
+Haemoglobin Estimation: 15.3 g/dl (Reference: 11.1 - 14.1)
+Total Leukocyte Count (TLC): 9.9 K/uL (Reference: 6 - 18)
+Platelet Count: 107 K/uL (Reference: 200 - 550)
+RBC Count (Red Blood Cell): 5.33 10^6/µL (Reference: 4.1 - 5.3)
+PCV (Haematocrit): 44.5 % (Reference: 30 - 40)
+Mean Corpuscular Volume (MCV): 83.4 fl (Reference: 68 - 84)
+Neutrophils: 68 % (Reference: 20 - 65)
+```
