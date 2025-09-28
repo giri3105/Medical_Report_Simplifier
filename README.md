@@ -1,26 +1,3 @@
-# Medical_Report_Simplifier
-Medical Report Simplifier , Put in your medical report and understand it like never before 
-
-## Table of Contents  
-1. [Setup Instructions](#setup-instructions)  
-2. [Architecture](#architecture)  
-3. [API Examples](#api-examples)  
-   - [Summarize Report](#summarize-report)  
-   - [Analyze Report](#analyze-report)  
-   - [Get Normalized Report](#get-normalized-report)  
-   - [Extract Table](#extract-table)  
-
----
-
-## Setup Instructions  
-
-### 1. Clone the repository  
-
-
-# Medical_Report_Simplifier
-Medical Report Simplifier , Put in your medical report and understand it like never before 
-
-Setup Instruction :
 
 # Medical Report Simplifier 
 Medical Report Simplifier , Put in your medical report and understand it like never before 
@@ -69,14 +46,11 @@ Medical Report Simplifier , Put in your medical report and understand it like ne
     ```bash
     ngrok http 8000
     ```
-    This will return a https URL which we can further use for API end point testing through cURL commands or Postman 
+    This will return a https URL which we can further use for API end point testing through cURL commands or Postman
+    
 
 
 
 ## Architecture
 
-
-    ```
-Now use the URL provided by ngrok or `http://localhost:8000` for testing API end points 
-
-make it a proper readme.md file and i also want table of contents with Setup Instruction that is this , then ar
+<img width="1920" height="1080" alt="HLD ARCHITECTURE" src="https://github.com/user-attachments/assets/d45e4720-f5c0-469c-8194-4ea9946f94e7" />
