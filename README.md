@@ -11,12 +11,20 @@ Setup Instruction :
     This project requires a Hugging Face API token to function. The repository includes a template file.
     ```bash
     # Create a copy of the example environment file
-    cp .env.example .env
+    cp .env.example .env    
     ```
     Now, open the `.env` file with a text editor and replace the placeholder `"hf_YOUR_TOKEN_HERE"` with your actual Hugging Face token.
 
 3.  **Run in Local:**
    ```bash
-    # Run in Local 
-    uvicorn main:app 
+#Run server locally
+uvicorn main:app
+```
+
+4    **Build and Run with Docker:**
+    This single command will build the Docker image and start the service.
+    ```bash
+    docker build -t medical-report-api .
+    docker run -p 8000:8000 --env-file .env medical-report-api
     ```
+    The API will be available at `http://localhost:8000`. The first build may take some time as it downloads the necessary AI models.
