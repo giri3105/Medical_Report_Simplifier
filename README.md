@@ -55,6 +55,7 @@ Medical Report Simplifier , Put in your medical report and understand it like ne
 ### High Level Architecture
 
 Routes Available illustrated with the picture
+
 <img width="1920" height="1080" alt="HLD ARCHITECTURE" src="https://github.com/user-attachments/assets/3810db4c-011e-428a-bce9-8683bc420777" />
 
 
@@ -84,13 +85,14 @@ The following image displays a low-level architecture diagram for a multi-stage 
 ### Output Guardrail Architecture
 
 This guardrail architecture uses two chained AI prompts: one generates a simple lab explanation, and the second validates its safety. If safe ("TRUE"), the explanation is returned; if not ("FALSE"), an error is given.
+
 <img width="1920" height="1080" alt="GUARDRAIL_ARCHITECTURE" src="https://github.com/user-attachments/assets/9089e3ef-8945-4dc2-a0d8-ac56044f5ee4" />
 
 
 
 ## API Examples
 
-### Summarize Report
+## Summarize Report
 **cURL command**
 
 Replace the `http://127.0.0.1:8000` with the URL from ngrok and `path_of_sample_report` by the actual path of sample_report that is provided in GitHub
@@ -106,7 +108,7 @@ Select `POST` request with URL `{https://url_from_ngrok or localhost}/summarize/
 Sample given : 
 <img width="756" height="249" alt="sample_post_man_request" src="https://github.com/user-attachments/assets/73843381-d3bd-4050-8916-10559dd61f61" />
 
-### Analyze Report
+## Analyze Report
 **cURL command**
 
 Replace the `http://127.0.0.1:8000` with the URL from ngrok and `path_of_sample_report` by the actual path of sample_report that is provided in GitHub
@@ -119,7 +121,7 @@ curl --location 'http://127.0.0.1:8000/analyze-report/' \
 
 Same as before but change the route to `/analyze-report/`
 
-### Get Normalized Report
+## Get Normalized Report
 **cURL command**
 
 Replace the `http://127.0.0.1:8000` with the URL from ngrok and `path_of_sample_report` by the actual path of sample_report that is provided in GitHub
@@ -132,7 +134,7 @@ curl --location 'http://127.0.0.1:8000/get-normalized-report/' \
 
 Same as before but change the route to `/get-normalized-report/`
 
-### Extract Table
+## Extract Table
 **cURL command**
 
 Replace the `http://127.0.0.1:8000` with the URL from ngrok and `path_of_sample_report` by the actual path of sample_report that is provided in GitHub
@@ -145,7 +147,7 @@ curl --location 'http://127.0.0.1:8000/extract-table/' \
 
 Same as before but change the route to `/extract-table/`
 
-### To use Text Input : 
+## To use Text Input : 
 **cURL command:**
 
 Replace the `http://127.0.0.1:8000` with the URL from ngrok 
