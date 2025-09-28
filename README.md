@@ -1,6 +1,6 @@
 
 # Medical Report Simplifier 
-Medical Report Simplifier , Put in your medical report and understand it like never before 
+This AI-powered backend service simplifies medical reports, converting both typed and scanned inputs into patient-friendly explanations. It ensures accurate, normalized results and prevents hallucination via robust OCR error handling and guarded LLM summarization.
 
 
 ## Table of Contents :
@@ -13,10 +13,11 @@ Medical Report Simplifier , Put in your medical report and understand it like ne
    - [Extract Table](#extract-table)  
 
 ## Setup Instructions
-1.  **Clone the repository:**
+1.  **Clone the repository and install dependencies:**
     ```bash
     git clone https://github.com/giri3105/Medical_Report_Simplifier.git
     cd Medical_Report_Simplifier
+    pip install -r requirements.txt
     ```
 2.  **Configure Environment Variables:**
     This project requires a Hugging Face API token to function. The repository includes a template file.
