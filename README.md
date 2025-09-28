@@ -20,7 +20,7 @@ This AI-powered backend service simplifies medical reports, converting both type
     pip install -r requirements.txt
     ```
 2.  **Configure Environment Variables:**
-    This project requires a Hugging Face API token to function. The repository includes a template file.Quick Link to getting Access Token : [Link]([url](https://huggingface.co/docs/hub/security-tokens)) 
+    This project requires a Hugging Face API token to function. The repository includes a template file. Quick Link for getting Access Token :([Link](https://huggingface.co/docs/hub/security-tokens)) 
     ```bash
     # Create a copy of the example environment file
     cd app
