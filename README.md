@@ -1,7 +1,41 @@
 # Medical_Report_Simplifier
 Medical Report Simplifier , Put in your medical report and understand it like never before 
 
+## Table of Contents  
+1. [Setup Instructions](#setup-instructions)  
+2. [Architecture](#architecture)  
+3. [API Examples](#api-examples)  
+   - [Summarize Report](#summarize-report)  
+   - [Analyze Report](#analyze-report)  
+   - [Get Normalized Report](#get-normalized-report)  
+   - [Extract Table](#extract-table)  
+
+---
+
+## Setup Instructions  
+
+### 1. Clone the repository  
+
+
+# Medical_Report_Simplifier
+Medical Report Simplifier , Put in your medical report and understand it like never before 
+
 Setup Instruction :
+
+# Medical Report Simplifier 
+Medical Report Simplifier , Put in your medical report and understand it like never before 
+
+
+## Table of Contents :
+1. [Setup Instructions](#setup-instructions)  
+2. [Architecture](#architecture)  
+3. [API Examples](#api-examples)  
+   - [Summarize Report](#summarize-report)  
+   - [Analyze Report](#analyze-report)  
+   - [Get Normalized Report](#get-normalized-report)  
+   - [Extract Table](#extract-table)  
+
+## Setup Instructions
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/giri3105/Medical_Report_Simplifier.git
@@ -14,18 +48,35 @@ Setup Instruction :
     cd app
     cp .env_example .env    
     ```
-    Now, open the `.env` file with a text editor and replace the placeholder `"hf_YOUR_TOKEN_HERE"` with your actual Hugging Face token.
+    Now, open the `.env` file with a text editor and replace the placeholder  with your actual Hugging Face token .
 
 3.  **Run in Local:**
-   ```bash
-#Run server locally
-uvicorn main:app
-```
-
-4    **Build and Run with Docker:**
-    This single command will build the Docker image and start the service.
     ```bash
-    docker build -t medical-report-api .
-    docker run -p 8000:8000 --env-file .env medical-report-api
+    #Run server locally
+    uvicorn main:app
     ```
-    The API will be available at `http://localhost:8000`. The first build may take some time as it downloads the necessary AI models.
+
+4.  **Run with Docker:**
+     Alternatively if you wish to run it with a docker 
+    ```bash
+    cd ..
+    docker compose build 
+    docker compose up -d
+    ```
+
+4.  **Tunnel thorugh ngrok:**
+    Open a new terminal / split terminal  
+    ```bash
+    ngrok http 8000
+    ```
+    This will return a https URL which we can further use for API end point testing through cURL commands or Postman 
+
+
+
+## Architecture
+
+
+    ```
+Now use the URL provided by ngrok or `http://localhost:8000` for testing API end points 
+
+make it a proper readme.md file and i also want table of contents with Setup Instruction that is this , then ar
