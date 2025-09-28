@@ -92,6 +92,10 @@ This guardrail architecture uses two chained AI prompts: one generates a simple 
 
 ## API Examples
 
+For Easy testing / validation I have given a `demo.ipynb` in the github repo `~/app/demo.ipynb` where you can test it quickly .
+**DISCLAIMER** Keep the server(app) running and update URL and path before testing using the demo file
+
+
 ## Summarize Report
 **cURL command**
 
