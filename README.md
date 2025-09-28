@@ -54,3 +54,47 @@ Medical Report Simplifier , Put in your medical report and understand it like ne
 ## Architecture
 
 <img width="1920" height="1080" alt="HLD ARCHITECTURE" src="https://github.com/user-attachments/assets/d45e4720-f5c0-469c-8194-4ea9946f94e7" />
+
+
+flowchart TD
+    %% INPUT
+    A[TEXT INPUT<br><img src="https://via.placeholder.com/40" width="40"/>]
+
+    %% MODELS
+    M1[microsoft/table-transformer-detection<br/>MODEL]
+    M2[microsoft/table-structure-recognition<br/>MODEL]
+    M3[Cell_Localization & EasyOCR]
+
+    %% PROCESSING NODES
+    B[Localized Table in the .png]
+    C[Localized Columns and Cells]
+    D[JSON Structured Data of the Image]
+    E[Normalized JSON Data]
+    F[Explanation in Natural Language (JSON format)]
+    G[Summary with Normalized Data]
+
+    %% ENDPOINTS
+    EP1[/extract-table/]
+    EP2[/get-normalized-report/]
+    EP3[/analyze-report/]
+    EP4[/summarize/]
+
+    %% FLOW
+    A -->|Input| M1 --> B
+    A --> M2 --> C
+    A --> M3 --> D
+    B --> D
+    C --> D
+
+    %% Extract table endpoint
+    D --> EP1
+
+    %% Normalization
+    D -->|Normalization Function| E --> EP2
+
+    %% Hugging Face API for explanation
+    E -->|HF API model: meta-llama/Llama-3.1-8B-Instruct| F --> EP3
+
+    %% Hugging Face API for summary
+    F -->|HF API model: meta-llama/Llama-3.1-8B-Instruct| G --> EP4
+
