@@ -51,27 +51,22 @@ async def analyze_report_endpoint(
         if file:
             print("Processing image input...")
             image = Image.open(file.file).convert("RGB")
-            # Step 1: The extractor's full pipeline should produce the final normalized report
             structured_data = extractor.process_image(image, confidence_threshold=0.5)
             
 
         # --- Text Path ---
         elif text_input:
             print("Processing text input...")
-            # FIX 2: Removed `await` because parse_text_to_structured_json is a regular function.
             structured_data = parse_text_to_structured_json(text_input)
-            print(structured_data)
 
 
         abnormal_results = {
-            key: row for key, row in structured_data.items()
+            key: row for key, row in structured_data['data'].items()
             if isinstance(row, dict) and row.get("status") != "Normal"
         } 
-        
         if not abnormal_results:
             return {"summary": "All results are within the normal range."}
         
-        # Step 3: Pass ONLY the abnormal results to the summarizer
         final_summary = get_llm_summary(abnormal_results)
         
         return JSONResponse(content=final_summary)
@@ -99,14 +94,12 @@ async def summarizer(
         if file:
             print("Processing image input...")
             image = Image.open(file.file).convert("RGB")
-            # Step 1: The extractor's full pipeline should produce the final normalized report
             structured_data = extractor.process_image(image, confidence_threshold=0.5)
             
 
         # --- Text Path ---
         elif text_input:
             print("Processing text input...")
-            # FIX 2: Removed `await` because parse_text_to_structured_json is a regular function.
             structured_data = parse_text_to_structured_json(text_input)
             print(structured_data)
 
@@ -119,7 +112,6 @@ async def summarizer(
         if not abnormal_results:
             return {"summary": "All results are within the normal range."}
         
-        # Step 3: Pass ONLY the abnormal results to the summarizer
         analyzed_report = get_llm_summary(abnormal_results)
         final_summary = summarize(analyzed_report, structured_data)
         return JSONResponse(content=final_summary)
