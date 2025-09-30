@@ -3,7 +3,7 @@ import json
 import requests
 import re
 from dotenv import load_dotenv
-# Corrected, safer prompt for generation
+# prompt for generation
 GENERATION_COLANG = '''template generate_explanation {
   role system
   content """
@@ -18,7 +18,7 @@ You are a helpful medical assistant. Your task is to explain lab results in simp
 }
 '''
 
-# Corrected, clearer prompt for validation
+# prompt for validation
 VALIDATION_COLANG = '''template validate_explanation {
   role system
   content """
@@ -128,24 +128,26 @@ cLac: 1.8 mmolfl (0.5 - 1.6)
 
 **CORRECT JSON OUTPUT:**
 
-{
-    "0": {
-        "parameter": "pH",
-        "results": "7.38",
-        "range": "7.350 - 7.450",
-        "status": "Normal"
-    },
-    "1": {
-        "parameter": "ck +",
-        "results": "6.0",
-        "range": "3.5 - 5.5 mrol/l",
-        "status": "High"
-    },
-    "2": {
-        "parameter": "cLac",
-        "results": "1.8",
-        "range": "0.5 - 1.6 mmolfl",
-        "status": "High"
+{'data':{
+        "0": {
+            "parameter": "pH",
+            "results": "7.38",
+            "range": "7.350 - 7.450",
+            "status": "Normal"
+        },
+        "1": {
+            "parameter": "ck +",
+            "results": "6.0",
+            "range": "3.5 - 5.5 mrol/l",
+            "status": "High"
+        },
+        "2": {
+            "parameter": "cLac",
+            "results": "1.8",
+            "range": "0.5 - 1.6 mmolfl",
+            "status": "High"
+        }
+
     }
 }
 

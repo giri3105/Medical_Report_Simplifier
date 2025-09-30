@@ -105,7 +105,7 @@ async def summarizer(
 
 
         abnormal_results = {
-            key: row for key, row in structured_data.items()
+            key: row for key, row in structured_data['data'].items()
             if isinstance(row, dict) and row.get("status") != "Normal"
         } 
         
